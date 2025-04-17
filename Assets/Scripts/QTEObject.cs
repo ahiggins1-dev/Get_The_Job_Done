@@ -62,6 +62,12 @@ public class QTEObject : MonoBehaviour, IInteractable
             //enables the specific function
             SpamSequence();
         }
+
+        else if(GameObject.FindGameObjectWithTag("RandomQTE"))
+        {
+            //enables the specific function
+            RandomSequence();
+        }
     }
 
     /// <summary>
@@ -74,6 +80,14 @@ public class QTEObject : MonoBehaviour, IInteractable
             timerCo = StartCoroutine(Countdown());
         }
     }
+
+    private void RandomSequence()
+    {
+        if(!isTimer)
+            timerCo = StartCoroutine(Countdown());
+    }
+
+
 
     /// <summary>
     /// Creates the internal countdown that dictates how long the QTE lasts

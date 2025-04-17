@@ -9,6 +9,8 @@ TagManager:
   - Ramp
   - Door
   - EndDoor
+  - RandomQTE
+  - KeyCollectable
   layers:
   - Default
   - TransparentFX

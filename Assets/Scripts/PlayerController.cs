@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     private InputAction quit;
     private InputAction spam;
 
-
     private Rigidbody rb;
     private bool isMoving;
     private bool eventStatus;
@@ -136,7 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             PublicEvents.qtePressed();
             overallScore++;
-            endGame.finalScore += overallScore;
+            //endGame.finalScore += overallScore;  TEMPORARY
         }
     }
 

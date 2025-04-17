@@ -58,6 +58,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RandomKey1",
+                    "type": "Button",
+                    "id": "daa14623-9226-4acd-8664-901dafea665f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RandomKey2",
+                    "type": "Button",
+                    "id": "82a323a8-a22b-4877-ac8b-16a9a2c88660",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RandomKey3",
+                    "type": "Button",
+                    "id": "3e065e54-cbaf-4af5-b639-289d3869faa2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -223,6 +250,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Spam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21bbae8f-ab68-46fd-957d-2ecc58554e20",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RandomKey1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2888b91c-4985-4d90-a3a4-4264a11338e4",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RandomKey2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7a3918b-a3ba-4235-b77e-7a5504251e1c",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RandomKey3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

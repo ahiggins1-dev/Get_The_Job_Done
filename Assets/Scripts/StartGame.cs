@@ -21,4 +21,9 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    private void LoadTutorial()
+    {
+        SceneManager.LoadSceneAsync(3);  //change number every time the build changes
+    }
 }
