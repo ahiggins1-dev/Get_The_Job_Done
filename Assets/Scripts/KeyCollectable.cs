@@ -25,7 +25,7 @@ public class KeyCollectable : MonoBehaviour, IInteractable
     public void Interact()
     {
         Debug.Log("Key item found!");
-        collectText.text = "You found the key!";
+        collectText.text = "You found a key!";
         collectText.enabled = true;
         textAppear.TextDisappear();
         Destroy(gameObject);

@@ -17,13 +17,18 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 
+public enum RandomQTEKey
+{
+    Key1, Key2, Key3
+}
+
 /// <summary>
 /// References the interactable interface
 /// </summary>
 public class QTEObject : MonoBehaviour, IInteractable
 {
     private int buttonGen;  //will use in later iterations of QTEs
-    private int correctKey; //will use in later iterations of QTEs
+    private RandomQTEKey correctKey; 
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text completeText;
@@ -31,6 +36,7 @@ public class QTEObject : MonoBehaviour, IInteractable
     [SerializeField] private int amountLeft;
     [SerializeField] private Animator animator;
     private bool isTimer;
+    private bool decideQTE;
     private Coroutine timerCo;
     public int increment;
 
@@ -43,6 +49,8 @@ public class QTEObject : MonoBehaviour, IInteractable
         countdownText.enabled = false;
 
         PublicEvents.qtePressed += ButtonPressed;
+        PublicEvents.randomKeyPressed += RandomButtonPressed;
+
     }
     
     /// <summary>
@@ -51,22 +59,28 @@ public class QTEObject : MonoBehaviour, IInteractable
     public void Interact()
     {
         //Enables the text explaining the QTE and showing the time limit
-        buttonText.enabled = true;
-        countdownText.enabled = true;
+        //buttonText.enabled = true;
+        //countdownText.enabled = true;
 
         Debug.Log("QTE Initiated!");
 
         //Checks if the object has the SpamQTE tag, will be updated with other QTE types in the future
-        if(GameObject.FindGameObjectWithTag("SpamQTE"))
+        if(gameObject.CompareTag("SpamQTE"))
         {
-            //enables the specific function
+            buttonText.text = "Press Space!";
+            buttonText.enabled = true;
+            countdownText.enabled = true;
+            decideQTE = false;
             SpamSequence();
         }
 
-        else if(GameObject.FindGameObjectWithTag("RandomQTE"))
+        else if(gameObject.CompareTag("RandomQTE"))
         {
-            //enables the specific function
-            RandomSequence();
+            buttonText.text = "Press Z!";
+            buttonText.enabled = true;
+            countdownText.enabled = true;
+            decideQTE = true;
+            SpamSequence();
         }
     }
 
@@ -80,14 +94,6 @@ public class QTEObject : MonoBehaviour, IInteractable
             timerCo = StartCoroutine(Countdown());
         }
     }
-
-    private void RandomSequence()
-    {
-        if(!isTimer)
-            timerCo = StartCoroutine(Countdown());
-    }
-
-
 
     /// <summary>
     /// Creates the internal countdown that dictates how long the QTE lasts
@@ -127,7 +133,7 @@ public class QTEObject : MonoBehaviour, IInteractable
         completeText.enabled = true;
 
         //Tells the player how many times they hit Space
-        completeText.text = "You hit the cube " + increment + " times! Wow!";
+        completeText.text = "You completed " + increment + " actions! Wow!";
 
         //Runs the function that will make the text disappear after a few seconds
         textAppear.TextDisappear();
@@ -138,13 +144,51 @@ public class QTEObject : MonoBehaviour, IInteractable
     /// </summary>
     private void ButtonPressed()
     {
-        //Plays the animation on the cube
-        animator.CrossFadeInFixedTime("shakeanimation", 0);
-
-        //If there is a timer, the increment will go up when the player hits the key
-        if (isTimer)
+        if (decideQTE == false)
         {
-            increment++;
+            //Plays the animation on the cube
+            animator.CrossFadeInFixedTime("shakeanimation", 0);
+
+            //If there is a timer, the increment will go up when the player hits the key
+            if (isTimer)
+            {
+                increment++;
+            }
+        }
+    }
+
+    private void RandomButtonPressed(RandomQTEKey keyPressed)
+    {
+        if (decideQTE == true)
+        {
+            if (keyPressed == correctKey)
+            {
+                //Plays the animation on the cube
+                animator.CrossFadeInFixedTime("flipanimation", 0);
+
+                //If there is a timer, the increment will go up when the player hits the key
+                if (isTimer)
+                {
+                    increment++;
+                }
+
+                correctKey = (RandomQTEKey)UnityEngine.Random.Range(0, 3);
+                switch (correctKey)
+                {
+                    case RandomQTEKey.Key1:
+                        buttonText.text = "Press Z!";
+                        break;
+                    case RandomQTEKey.Key2:
+                        buttonText.text = "Press G!";
+                        break;
+                    case RandomQTEKey.Key3:
+                        buttonText.text = "Press N!";
+                        break;
+                    default:
+                        Debug.Log("Error! Error!");
+                        break;
+                }
+            }
         }
     }
 

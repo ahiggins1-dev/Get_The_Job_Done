@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private InputAction restart;
     private InputAction quit;
     private InputAction spam;
+    private InputAction keyOne;
+    private InputAction keyTwo;
+    private InputAction keyThree;
 
     private Rigidbody rb;
     private bool isMoving;
@@ -74,6 +77,9 @@ public class PlayerController : MonoBehaviour
         restart = playerInput.currentActionMap.FindAction("Restart");
         quit = playerInput.currentActionMap.FindAction("Quit");
         spam = playerInput.currentActionMap.FindAction("Spam");
+        keyOne = playerInput.currentActionMap.FindAction("RandomKey1");
+        keyTwo = playerInput.currentActionMap.FindAction("RandomKey2");
+        keyThree = playerInput.currentActionMap.FindAction("RandomKey3");
 
         //Creates the functions that will store code for these inputs
         move.started += Move_started;
@@ -82,10 +88,37 @@ public class PlayerController : MonoBehaviour
         restart.started += Restart_started;
         quit.started += Quit_started;
         spam.started += Spam_started;
+        keyOne.started += KeyOne_started;
+        keyTwo.started += KeyTwo_started;
+        keyThree.started += KeyThree_started;
 
         //Links to the class that will be used for QTE systems
         PublicEvents.qteStarted += QTEStarted;
         PublicEvents.qteStopped += QTESTopped;
+    }
+
+    private void KeyThree_started(InputAction.CallbackContext obj)
+    {
+        if (eventStatus)
+        {
+            PublicEvents.randomKeyPressed(RandomQTEKey.Key3);
+        }
+    }
+
+    private void KeyTwo_started(InputAction.CallbackContext obj)
+    {
+        if (eventStatus)
+        {
+            PublicEvents.randomKeyPressed(RandomQTEKey.Key2);
+        }
+    }
+
+    private void KeyOne_started(InputAction.CallbackContext obj)
+    {
+        if(eventStatus)
+        {
+            PublicEvents.randomKeyPressed(RandomQTEKey.Key1);
+        }
     }
 
     /// <summary>
@@ -100,6 +133,9 @@ public class PlayerController : MonoBehaviour
         restart.started -= Restart_started;
         quit.started -= Quit_started;
         spam.started -= Spam_started;
+        keyOne.started -= KeyOne_started;
+        keyTwo.started -= KeyTwo_started;
+        keyThree.started -= KeyThree_started;
 
         //Stops any active QTEs and makes it so the player cannot start any new ones
         PublicEvents.qteStarted -= QTEStarted;

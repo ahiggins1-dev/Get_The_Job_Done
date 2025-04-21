@@ -20,6 +20,7 @@ public static class PublicEvents
     public static Action qtePressed;
     public static Action qteStarted;
     public static Action qteStopped;
+    public static Action<RandomQTEKey> randomKeyPressed;
 }
 
 
