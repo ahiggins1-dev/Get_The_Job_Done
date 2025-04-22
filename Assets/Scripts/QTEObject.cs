@@ -111,6 +111,7 @@ public class QTEObject : MonoBehaviour, IInteractable
 
         //The timer is now active, and the number of times the player has performed the action is now 0
         isTimer = true;
+        gameObject.SetActive(true);
         increment = 0;
 
         //This runs while there is still time left in the QTE
