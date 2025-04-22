@@ -9,6 +9,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform orientation;
     [SerializeField] private Camera playerCam;
 
-    public int overallScore;
+    public static int overallScore;
     [SerializeField] private EndGame endGame;
 
     private InputAction move;
@@ -44,6 +45,9 @@ public class PlayerController : MonoBehaviour
     private InputAction keyOne;
     private InputAction keyTwo;
     private InputAction keyThree;
+
+    [SerializeField] private int objectiveCall;
+    [SerializeField] private TMP_Text objectiveText;
 
     private Rigidbody rb;
     private bool isMoving;
@@ -95,6 +99,8 @@ public class PlayerController : MonoBehaviour
         //Links to the class that will be used for QTE systems
         PublicEvents.qteStarted += QTEStarted;
         PublicEvents.qteStopped += QTESTopped;
+
+        objectiveText.text = "Objective: " + ObjectiveList.Objectives[objectiveCall];
     }
 
     private void KeyThree_started(InputAction.CallbackContext obj)
@@ -102,6 +108,7 @@ public class PlayerController : MonoBehaviour
         if (eventStatus)
         {
             PublicEvents.randomKeyPressed(RandomQTEKey.Key3);
+            overallScore++;
         }
     }
 
@@ -110,6 +117,7 @@ public class PlayerController : MonoBehaviour
         if (eventStatus)
         {
             PublicEvents.randomKeyPressed(RandomQTEKey.Key2);
+            overallScore++;
         }
     }
 
@@ -118,6 +126,7 @@ public class PlayerController : MonoBehaviour
         if(eventStatus)
         {
             PublicEvents.randomKeyPressed(RandomQTEKey.Key1);
+            overallScore++;
         }
     }
 

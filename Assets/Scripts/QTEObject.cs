@@ -27,11 +27,17 @@ public enum RandomQTEKey
 /// </summary>
 public class QTEObject : MonoBehaviour, IInteractable
 {
+    [SerializeField] private GameObject keyObjective;
+    [SerializeField] private bool keySpawner;
+    [SerializeField] private int objectiveCall;
+
     private int buttonGen;  //will use in later iterations of QTEs
     private RandomQTEKey correctKey; 
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text completeText;
+    [SerializeField] private TMP_Text objectiveText;
+
     [SerializeField] private TextAppear textAppear;
     [SerializeField] private int amountLeft;
     [SerializeField] private Animator animator;
@@ -50,7 +56,6 @@ public class QTEObject : MonoBehaviour, IInteractable
 
         PublicEvents.qtePressed += ButtonPressed;
         PublicEvents.randomKeyPressed += RandomButtonPressed;
-
     }
     
     /// <summary>
@@ -128,6 +133,18 @@ public class QTEObject : MonoBehaviour, IInteractable
 
         //The gameobject also disappears
         gameObject.SetActive(false);
+
+        //Enables any key objects needed to spawn by completing the QTE
+        if(keySpawner == true)
+        {
+            keyObjective.gameObject.SetActive(true);
+        }
+
+        if(objectiveCall != 0)
+        {
+            objectiveText.text = "Objective: " + ObjectiveList.Objectives[objectiveCall];
+        }
+       
 
         //Enables the text informing the player that the QTE has been completed
         completeText.enabled = true;

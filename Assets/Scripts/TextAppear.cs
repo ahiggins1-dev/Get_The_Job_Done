@@ -14,6 +14,7 @@ using UnityEngine;
 
 public class TextAppear : MonoBehaviour
 {
+    //private static TextAppear instance;              for future iterations
     [SerializeField] private TMP_Text collectText;
 
     /// <summary>
@@ -30,10 +31,14 @@ public class TextAppear : MonoBehaviour
     /// <returns></returns>
     IEnumerator TextDisable()
     {
+        //instance = this;         for future iterations
+
         yield return new WaitForSeconds(3f);
 
         Debug.Log("Countdown Finished!");
 
         collectText.enabled = false;
+
+        //instance = null;        for future iterations
     }
 }

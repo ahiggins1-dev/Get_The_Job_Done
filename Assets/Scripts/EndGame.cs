@@ -16,8 +16,7 @@ public class EndGame : MonoBehaviour
 {
     [SerializeField] private TMP_Text endScoreText;
 
-    [SerializeField] public int finalScore;
-    private QTEObject qteObject;
+     private QTEObject qteObject;
 
     /// <summary>
     /// Unlocks the player cursor and makes it visible again
@@ -27,12 +26,13 @@ public class EndGame : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        if (finalScore >= 60)
+        if (PlayerController.overallScore >= 200)
         {
-            endScoreText.text = "You scored a " + finalScore + "! Congratulations!";
+            endScoreText.text = "You scored a " + PlayerController.overallScore + "! Congratulations!";
         }
         else
-            endScoreText.text = "You scored a " + finalScore + ". Aim for a higher score next time!";
+            endScoreText.text = "You scored a " + PlayerController.overallScore + 
+                ". Aim for a higher score next time!";
     }
 
     /// <summary>

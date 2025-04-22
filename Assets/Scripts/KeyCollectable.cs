@@ -14,22 +14,38 @@ using UnityEngine;
 
 public class KeyCollectable : MonoBehaviour, IInteractable
 {
+    public static bool hasKey;
     [SerializeField] private TMP_Text collectText;
     [SerializeField] private TextAppear textAppear;
+    [SerializeField] private TMP_Text objectiveText;
+    [SerializeField] private int objectiveCall;
 
     private void Start()
     {
+        hasKey = false;
         collectText.enabled = false;
+
+        if(gameObject.CompareTag("ObjectiveKey"))
+        {
+            gameObject.SetActive(false);
+            Debug.Log("Objective keys hidden!");
+        }
+
+        
     }
 
     public void Interact()
     {
+        hasKey = true;
         Debug.Log("Key item found!");
         collectText.text = "You found a key!";
         collectText.enabled = true;
         textAppear.TextDisappear();
         Destroy(gameObject);
 
-        //variable that allows the player to progress, will need a var in another script(?)
+        if(gameObject.CompareTag("ObjectiveKey"))
+        {
+            objectiveText.text = "Objective: " + ObjectiveList.Objectives[objectiveCall];
+        }
     }
 }
