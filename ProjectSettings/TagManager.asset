@@ -12,6 +12,7 @@ TagManager:
   - RandomQTE
   - KeyCollectable
   - ObjectiveKey
+  - TutorialEndDoor
   layers:
   - Default
   - TransparentFX

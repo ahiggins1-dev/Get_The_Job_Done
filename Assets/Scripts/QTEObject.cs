@@ -12,6 +12,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
+
 //using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
@@ -53,6 +55,7 @@ public class QTEObject : MonoBehaviour, IInteractable
     {
         buttonText.enabled = false;
         countdownText.enabled = false;
+        animator = GetComponent<Animator>();
 
         PublicEvents.qtePressed += ButtonPressed;
         PublicEvents.randomKeyPressed += RandomButtonPressed;
@@ -182,6 +185,7 @@ public class QTEObject : MonoBehaviour, IInteractable
             if (keyPressed == correctKey)
             {
                 //Plays the animation on the cube
+                Debug.Log(animator.name);
                 animator.CrossFadeInFixedTime("flipanimation", 0);
 
                 //If there is a timer, the increment will go up when the player hits the key
@@ -210,12 +214,17 @@ public class QTEObject : MonoBehaviour, IInteractable
         }
     }
 
+
+    private void OnEnable()
+    {
+        //animator = GetComponent<Animator>();
+    }
+
     /// <summary>
     /// When the object is disabled, the QTE ends and the animator of the gameobject is disabled
     /// </summary>
     private void OnDisable()
     {
         PublicEvents.qtePressed -= ButtonPressed;
-        animator.enabled = false;
     }
 }

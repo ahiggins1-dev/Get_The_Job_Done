@@ -9,6 +9,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform orientation;
     [SerializeField] private Camera playerCam;
 
-    public static int overallScore;
+    [SerializeField] public static int overallScore = 0;
     [SerializeField] private EndGame endGame;
 
     private InputAction move;
@@ -67,9 +68,6 @@ public class PlayerController : MonoBehaviour
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
-        //Sets the QTE score of the stage to 0;
-        overallScore = 0;
-
         //Accesses the action map and player body
         rb = GetComponent<Rigidbody>();
         playerInput.currentActionMap.Enable();
@@ -100,7 +98,15 @@ public class PlayerController : MonoBehaviour
         PublicEvents.qteStarted += QTEStarted;
         PublicEvents.qteStopped += QTESTopped;
 
-        objectiveText.text = "Objective: " + ObjectiveList.Objectives[objectiveCall];
+        if(SceneManager.GetActiveScene().name != "TutorialScene")
+        {
+            objectiveText.text = "Objective: " + ObjectiveList.Objectives[objectiveCall];
+        }
+        else
+        {
+            objectiveText.text = "";
+        }
+        
     }
 
     private void KeyThree_started(InputAction.CallbackContext obj)
@@ -247,6 +253,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="obj"></param>
     private void Move_started(InputAction.CallbackContext obj)
     {
+        Debug.Log("Moving!");
         //Creates the variables allowing the player to move
         isMoving = true;
         inputMovementValue = obj.ReadValue<Vector2>();

@@ -17,6 +17,13 @@ public class StartGame : MonoBehaviour
     /// <summary>
     /// Moves the player to the next scene, which effectively starts the game
     /// </summary>
+    /// 
+
+    private void Start()
+    {
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+    }
     private void StartExperience()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -24,6 +31,16 @@ public class StartGame : MonoBehaviour
 
     private void LoadTutorial()
     {
-        SceneManager.LoadSceneAsync(3);  //change number every time the build changes
+        SceneManager.LoadSceneAsync(5);
+    }
+
+    private void QuitExperience()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+
+        if (Application.isPlaying)
+        {
+            Application.Quit();
+        }
     }
 }

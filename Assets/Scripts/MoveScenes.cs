@@ -10,6 +10,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,13 @@ public class MoveScenes : MonoBehaviour, IInteractable
     /// </summary>
    public void Interact()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(gameObject.CompareTag("TutorialEndDoor"))
+        {
+            SceneManager.LoadSceneAsync(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
