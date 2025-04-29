@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
     private void Quit_started(InputAction.CallbackContext obj)
     {
         //Quits both the application and the Unity Editor
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         if (Application.isPlaying)
         {

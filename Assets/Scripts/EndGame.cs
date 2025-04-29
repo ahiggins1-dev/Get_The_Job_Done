@@ -40,7 +40,7 @@ public class EndGame : MonoBehaviour
     /// </summary>
     private void EndExperience()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         if (Application.isPlaying)
         {

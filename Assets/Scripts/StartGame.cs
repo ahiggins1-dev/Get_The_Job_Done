@@ -36,7 +36,7 @@ public class StartGame : MonoBehaviour
 
     private void QuitExperience()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         if (Application.isPlaying)
         {
