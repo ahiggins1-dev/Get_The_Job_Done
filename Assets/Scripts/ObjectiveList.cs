@@ -30,7 +30,6 @@ public class ObjectiveList : MonoBehaviour
         {
             return;
         }
-        objectives.Add(0, "Tutorial Text!");
         objectives.Add(1, "Make Breakfast!");
         objectives.Add(2, "Find your House Key!");
         objectives.Add(3, "Go to Work!");

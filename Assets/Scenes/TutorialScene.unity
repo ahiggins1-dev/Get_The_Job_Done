@@ -13745,11 +13745,20 @@ PrefabInstance:
       propertyPath: objectiveText
       value: 
       objectReference: {fileID: 1091299754}
+    - target: {fileID: 8556417485097592232, guid: 106af86888da2404baff5df414935b36, type: 3}
+      propertyPath: interactSource
+      value: 
+      objectReference: {fileID: 2129445373}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 106af86888da2404baff5df414935b36, type: 3}
+--- !u!4 &2129445373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 911822152175372019, guid: 106af86888da2404baff5df414935b36, type: 3}
+  m_PrefabInstance: {fileID: 2129445372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2131643852
 GameObject:
   m_ObjectHideFlags: 0
