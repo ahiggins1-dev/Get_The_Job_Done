@@ -180,6 +180,11 @@ public class QTEObject : MonoBehaviour, IInteractable
 
     private void RandomButtonPressed(RandomQTEKey keyPressed)
     {
+        if(animator == null)
+        {
+            return;
+        }
+
         if (decideQTE == true)
         {
             if (keyPressed == correctKey)

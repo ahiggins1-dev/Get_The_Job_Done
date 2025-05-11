@@ -6672,6 +6672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpamQTE (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1190905960480387742, guid: 4fb9e894243144543aba5a03d7d65b94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019015674624185615, guid: 4fb9e894243144543aba5a03d7d65b94, type: 3}
       propertyPath: amountLeft
       value: 4
@@ -8152,6 +8156,91 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4819851783926722, guid: 1fbdccb55fd15bc4f92646bd818aca51, type: 3}
   m_PrefabInstance: {fileID: 132139145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1712636574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.187
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 153.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 44.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372372935543910806, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: buttonText
+      value: 
+      objectReference: {fileID: 1943538226}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: textAppear
+      value: 
+      objectReference: {fileID: 1080895734}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: completeText
+      value: 
+      objectReference: {fileID: 1614562618}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: keyObjective
+      value: 
+      objectReference: {fileID: 281668270}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1800240316}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: objectiveCall
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131012384602006795, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: objectiveText
+      value: 
+      objectReference: {fileID: 1411488599}
+    - target: {fileID: 5438327165053283218, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
+      propertyPath: m_Name
+      value: FinishedQTEPan
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8bb91775fe93eda4bb61a8f6354d8e7e, type: 3}
 --- !u!1001 &1720680390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10467,3 +10556,4 @@ SceneRoots:
   - {fileID: 878400171}
   - {fileID: 1635388826}
   - {fileID: 506906651}
+  - {fileID: 1712636574}
