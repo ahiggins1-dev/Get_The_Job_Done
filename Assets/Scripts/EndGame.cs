@@ -26,7 +26,7 @@ public class EndGame : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        if (PlayerController.overallScore >= 200)
+        if (PlayerController.overallScore >= 150)
         {
             endScoreText.text = "You scored a " + PlayerController.overallScore + "! Congratulations!";
         }

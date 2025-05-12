@@ -59,6 +59,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform interactSource;
     [SerializeField] private float interactRange;
 
+    [SerializeField] private AudioClip interactSound;
+    [SerializeField] private AudioClip minigameSoundOne;
+    [SerializeField] private AudioClip minigameSoundTwo;
+    [SerializeField] private AudioClip doorOpen;
+
     /// <summary>
     /// Start sets up all the necessary actions for the player
     /// </summary>
@@ -113,6 +118,7 @@ public class PlayerController : MonoBehaviour
     {
         if (eventStatus)
         {
+            AudioSource.PlayClipAtPoint(minigameSoundTwo, transform.position);
             PublicEvents.randomKeyPressed(RandomQTEKey.Key3);
             overallScore++;
         }
@@ -122,6 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         if (eventStatus)
         {
+            AudioSource.PlayClipAtPoint(minigameSoundTwo, transform.position);
             PublicEvents.randomKeyPressed(RandomQTEKey.Key2);
             overallScore++;
         }
@@ -131,6 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         if(eventStatus)
         {
+            AudioSource.PlayClipAtPoint(minigameSoundTwo, transform.position);
             PublicEvents.randomKeyPressed(RandomQTEKey.Key1);
             overallScore++;
         }
@@ -184,9 +192,9 @@ public class PlayerController : MonoBehaviour
         //If a QTE is happening, it allows the player to perform this input
         if (eventStatus)
         {
+            AudioSource.PlayClipAtPoint(minigameSoundOne, transform.position);
             PublicEvents.qtePressed();
             overallScore++;
-            //endGame.finalScore += overallScore;  TEMPORARY
         }
     }
 
@@ -196,13 +204,8 @@ public class PlayerController : MonoBehaviour
     /// <param name="obj"></param>
     private void Quit_started(InputAction.CallbackContext obj)
     {
-        //Quits both the application and the Unity Editor
-        //UnityEditor.EditorApplication.isPlaying = false;
-
-        if (Application.isPlaying)
-        {
-            Application.Quit();
-        }
+        //Takes the player back to the titlescreen
+        SceneManager.LoadScene(0);
     }
 
     /// <summary>
@@ -232,6 +235,18 @@ public class PlayerController : MonoBehaviour
             {
                 //Performs the Interact function in the interface
                 interactObj.Interact();
+
+                if (hitinfo.collider.gameObject.tag == "Door")
+                {
+                    //Plays audio clip for the door
+                    AudioSource.PlayClipAtPoint(doorOpen, transform.position);
+                }
+                else if (hitinfo.collider.gameObject.tag == "Collectable" || hitinfo.collider.gameObject.tag 
+                    == "ObjectiveKey")
+                {
+                    //Plays audio clip for other interactables (collectables)
+                    AudioSource.PlayClipAtPoint(interactSound, transform.position);
+                }
             }
         }
     }
